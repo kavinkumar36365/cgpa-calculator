@@ -27,7 +27,7 @@ def extract_table(image_path):
     table_region = image[y:y+h, x:x+w]
 
     # Save the extracted table region
-    cv2.imwrite("table_region3.png", table_region)
+    cv2.imwrite("table_region.png", table_region)
 
     # Check if table region is not empty
     if table_region.size > 0:

@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-file = "table_region3.png"
+file = "table_region.png"
 table_image_contour = cv2.imread(file, 0)
 table_image = cv2.imread(file)
 ret, thresh_value = cv2.threshold(table_image_contour, 180, 255, cv2.THRESH_BINARY_INV)
@@ -16,4 +16,4 @@ for cnt in contours:
     table_image = cv2.rectangle(table_image, (x, y), (x + w, y + h), (0, 0, 255), 1)
 plt.imshow(table_image)
 plt.show()
-cv2.namedWindow('detecttable', cv2.WINDOW_NORMAL)
+cv2.namedWindow('detectable', cv2.WINDOW_NORMAL)
