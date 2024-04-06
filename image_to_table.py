@@ -36,4 +36,4 @@ def extract_table(image_path):
         print("Table extraction failed.")
 
 # Example usage
-extract_table("output_antialiased.png")
+extract_table("output_antialiased1.png")

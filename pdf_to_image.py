@@ -27,7 +27,7 @@ pdf_document = fitz.open('sem3.pdf')
 
 # Load the first page
 page = pdf_document.load_page(0)
-dpi=300
+dpi=1000
 # Get the pixmap
 pix = page.get_pixmap(matrix=fitz.Matrix(dpi/72, dpi/72))  # Scale up the image by a factor of 2
 
@@ -35,4 +35,5 @@ pix = page.get_pixmap(matrix=fitz.Matrix(dpi/72, dpi/72))  # Scale up the image 
 resized_img = resize_with_antialiasing(pix, pix.width, pix.height)
 
 # Save the resized image as a PNG file
-resized_img.save("output_antialiased.png")
+resized_img.save("output_antialiased1.png")
+print("Image saved successfully.")
