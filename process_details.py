@@ -12,6 +12,7 @@ class sgpa:
         self.grades=[]
         self.credits=[]
         self.sgpa=0
+        self.has_arrear=False
         self.path= pdf_path
         self.image=None
     
@@ -114,19 +115,25 @@ class sgpa:
         text=read_result_json['analyze_result']['read_results'][0]['lines']
 
         for i in text:
-            if (((i['bounding_box'][0]>4260 and i['bounding_box'][2]<5300) or i['bounding_box'][0]>5775 and i['bounding_box'][2]<6710)) and (i['bounding_box'][5]>600):
-                if (i['bounding_box'][0]>4260 and i['bounding_box'][2]<5300):
+            if (((i['bounding_box'][0]>4260 and i['bounding_box'][2]<5300) or (i['bounding_box'][0]>5060 and i['bounding_box'][2]<5970) or i['bounding_box'][0]>5775 and i['bounding_box'][2]<6710)) and (i['bounding_box'][5]>600):
+
+                if (i['bounding_box'][0]> 5060 and i['bounding_box'][2]<5970):
+                    if i['text']=='U':
+                        self.has_arrear=True
+                        break
+                elif (i['bounding_box'][0]>4260 and i['bounding_box'][2]<5300):
                     self.grades.append(int(i['text']))
                 else:
                     self.credits.append(int(i['text']))
 
-                if(len(self.credits)>0 and self.credits[len(self.credits)-1]==1):
-                    self.credits.pop()
-                    self.grades.pop()
         
         return
     
     def calculate_sgpa(self):
+        self.perform_ocr()
+        if self.has_arrear:
+            self.sgpa=0
+            return
         self.total_credits=np.sum(self.credits)
         self.sgpa= (np.matmul(self.grades,np.reshape(self.credits,(len(self.grades),-1)))/self.total_credits)[0]
         return
