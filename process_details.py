@@ -87,8 +87,8 @@ class sgpa:
 
         image_stream = io.BytesIO(byte_im)
         # Set up the Computer Vision client
-        key='7756f8a901bc4fddafb9a66d2bafe7bb'
-        endpoint='https://cv-t.cognitiveservices.azure.com/'
+        key='your key'
+        endpoint='your endpoint'
 
         computervision_client=ComputerVisionClient(endpoint,CognitiveServicesCredentials(key))
         #CalltheAPI
