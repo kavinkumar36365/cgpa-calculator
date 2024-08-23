@@ -23,6 +23,7 @@ This project is a Python-based CGPA calculator that processes PDF documents of s
 
 ## Usage
 1. Ensure all dependencies are installed.
-2. Place your semester PDF files in the project directory.
-3. Run `test.py` to process the PDFs and calculate the CGPA.
+2. Use your credentials for the azure ocr in process details class.
+3. Place your semester PDF files in the project directory.
+4. Run `test.py` to process the PDFs and calculate the CGPA.
 
